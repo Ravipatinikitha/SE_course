@@ -1,0 +1,13 @@
+.dashboard-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+.dashboard-menu li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    cursor: pointer;
+}
+.dashboard-menu a {
+    text-decoration: none;
+    color: #3B82F6;
+}

@@ -1,0 +1,39 @@
+.bus-schedule-container {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    background: #ffffff;
+    padding: 10px;
+}
+
+.bus-schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #5a84e7;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.add-reminder {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.bus-schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.bus-schedule-table th, .bus-schedule-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.bus-schedule-table th {
+    background: #f0f0f0;
+}
