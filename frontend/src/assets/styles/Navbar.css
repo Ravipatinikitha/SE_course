@@ -12,6 +12,14 @@
     z-index: 1000;
 }
 
+.navbar {
+    position: relative;
+    width: 360px; /* Mobile viewport width */
+    height: 60px; /* Mobile viewport height */
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
 .menu-icon {
     position: absolute;
     left: 20px;
