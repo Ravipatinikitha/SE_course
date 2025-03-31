@@ -1,3 +1,11 @@
+.dashboard-menu {
+    position: relative;
+    width: 360px; /* Mobile viewport width */
+    height: 640px; /* Mobile viewport height */
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
 .dashboard-menu ul {
     list-style-type: none;
     padding: 0;
