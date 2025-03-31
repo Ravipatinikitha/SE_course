@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "./Navbar.css";
+import "../assets/styles/Navbar.css";
 import { FaBars, FaHome, FaBus, FaMap, FaBell, FaQuestionCircle, FaComment, FaClock } from "react-icons/fa";
 
-const Navbar = () => {
+function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const location = useLocation();
 
@@ -15,22 +15,18 @@ const Navbar = () => {
         setMenuOpen(false);
     };
 
-    // Mapping paths to page titles
+    // Page Titles Based on Route
     const pageTitles = {
-        "/home": "Home",
+        "/": "Home",
         "/bus-schedule": "Bus Schedule",
         "/map": "Map",
         "/notifications": "Notifications",
         "/faq": "FAQ",
         "/feedback": "Feedback",
-        "/reminder": "Add Reminder", // Changed to "Add Reminder"
     };
 
-    // If the user is on /bus-schedule, show "Bus Schedule | Add Reminder"
-    const currentTitle =
-        location.pathname === "/bus-schedule"
-            ? "Bus Schedule | Add Reminder"
-            : pageTitles[location.pathname] || "Bus Scheduling App";
+    // Get the current page title or default to "Bus Scheduling App"
+    const currentTitle = pageTitles[location.pathname] || "Bus Scheduling App";
 
     return (
         <div className="navbar">
@@ -39,31 +35,16 @@ const Navbar = () => {
 
             {menuOpen && (
                 <div className="nav-links">
-                    <Link to="/home" onClick={closeMenu}>
-                        <FaHome className="icon" /> Home
-                    </Link>
-                    <Link to="/bus-schedule" onClick={closeMenu}>
-                        <FaBus className="icon" /> Bus Schedule
-                    </Link>
-                    <Link to="/reminder" onClick={closeMenu}>
-                        <FaClock className="icon" /> Add Reminder
-                    </Link>
-                    <Link to="/map" onClick={closeMenu}>
-                        <FaMap className="icon" /> Map
-                    </Link>
-                    <Link to="/notifications" onClick={closeMenu}>
-                        <FaBell className="icon" /> Notifications
-                    </Link>
-                    <Link to="/faq" onClick={closeMenu}>
-                        <FaQuestionCircle className="icon" /> FAQ
-                    </Link>
-                    <Link to="/feedback" onClick={closeMenu}>
-                        <FaComment className="icon" /> Feedback
-                    </Link>
+                    <Link to="/" onClick={closeMenu}><FaHome className="icon" /> Home</Link>
+                    <Link to="/bus-schedule" onClick={closeMenu}><FaBus className="icon" /> Bus Schedule</Link>
+                    <Link to="/map" onClick={closeMenu}><FaMap className="icon" /> Map</Link>
+                    <Link to="/notifications" onClick={closeMenu}><FaBell className="icon" /> Notifications</Link>
+                    <Link to="/faq" onClick={closeMenu}><FaQuestionCircle className="icon" /> FAQ</Link>
+                    <Link to="/feedback" onClick={closeMenu}><FaComment className="icon" /> Feedback</Link>
                 </div>
             )}
         </div>
     );
-};
+}
 
 export default Navbar;
