@@ -4,7 +4,17 @@
     text-align: center;
     background: #ffffff;
     padding: 10px;
+    margin-top: 80px; 
+    padding: 20px; 
 }
+
+.bus-schedule-container {
+    position: relative;
+    width: 360px; /* Mobile viewport width */
+    height: 640px; /* Mobile viewport height */
+    margin: 0 auto;
+    overflow: hidden;
+  }
 
 .bus-schedule-header {
     display: flex;
