@@ -4,7 +4,6 @@ import '../assets/styles/FAQ.css';
 const FAQ = () => {
     return (
         <div className="faq-container">
-            <h1>Frequently Asked Questions</h1>
             <div className="faq-item">
                 <h3>1. What is the NITC Bus Scheduling System?</h3>
                 <p>
