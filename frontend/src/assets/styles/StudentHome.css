@@ -3,6 +3,14 @@
     background-color: #f0f4f8; /* Light grey background for better visibility */
 }
 
+.student-home {
+    position: relative;
+    width: 360px; /* Mobile viewport width */
+    height: 640px; /* Mobile viewport height */
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
 .bus-list {
     display: flex;
     flex-wrap: wrap;
