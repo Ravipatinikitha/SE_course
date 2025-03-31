@@ -1,5 +1,4 @@
 .reminder-page {
-    background-color: #E5E5E5; /* Light grey background */
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -7,18 +6,13 @@
     padding-top: 50px; /* Moves content slightly down from the top */
 }
 
-.nav-bar {
-    background-color: #5A9BD5; /* Blue background */
-    width: 90%;
-    max-width: 600px;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center; /* Centers the text horizontally */
-    align-items: center; /* Centers the text vertically */
-}
+.reminder-page {
+    position: relative;
+    width: 360px; /* Mobile viewport width */
+    height: 640px; /* Mobile viewport height */
+    margin: 0 auto;
+    overflow: hidden;
+  }
 
 .reminder-form {
     background-color: white;
@@ -31,7 +25,7 @@
     gap: 10px;
     width: 90%;
     max-width: 400px;
-    margin-top: 20px; /* Adjusts spacing from the navbar */
+    margin-top: 40px; /* Increased spacing from the heading */
 }
 
 .reminder-form button {
