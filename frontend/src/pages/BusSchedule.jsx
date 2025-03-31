@@ -12,7 +12,6 @@ const BusSchedule = () => {
     return (
         <div className="bus-schedule-container">
             <div className="bus-schedule-header">
-                <h2>Bus Schedule</h2>
                 <Link to="/reminder" className="add-reminder">+ Add Reminder</Link>
             </div>
 
