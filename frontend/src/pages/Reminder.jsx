@@ -5,7 +5,6 @@ const Reminder = () => {
     return (
         <div className="reminder-page">
             <div className="nav-bar" style={{ backgroundColor: '#5A9BD5' }}>
-                <h1>Reminder</h1>
             </div>
 
             <div className="reminder-form">
