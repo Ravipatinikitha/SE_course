@@ -31,7 +31,6 @@ const Feedback = () => {
 
     return (
         <div className="feedback">
-            <h2>Provide your Feedback for Bus Scheduling System</h2>
 
             <div className="question">
                 <p>1. How easy is it to navigate the bus scheduling app?</p>
