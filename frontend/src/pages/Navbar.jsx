@@ -1,19 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../assets/styles/Navbar.css";
-import { FaBars, FaHome, FaBus, FaMap, FaBell, FaQuestionCircle, FaComment, FaClock } from "react-icons/fa";
+import { FaBars, FaHome, FaBus, FaMap, FaBell, FaQuestionCircle, FaComment } from "react-icons/fa";
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const location = useLocation();
+    const menuRef = useRef(null);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
 
-    const closeMenu = () => {
-        setMenuOpen(false);
+    const closeMenu = (e) => {
+        if (menuRef.current && !menuRef.current.contains(e.target)) {
+            setMenuOpen(false);
+        }
     };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", closeMenu);
+        return () => {
+            document.removeEventListener("mousedown", closeMenu);
+        };
+    }, []);
 
     // Page Titles Based on Route
     const pageTitles = {
@@ -30,19 +40,21 @@ function Navbar() {
 
     return (
         <div className="navbar">
-            <FaBars className="menu-icon" onClick={toggleMenu} />
-            <h1 className="navbar-title">{currentTitle}</h1>
+            <div className="menu-container" ref={menuRef}>
+                <FaBars className="menu-icon" onClick={toggleMenu} />
+                {menuOpen && (
+                    <div className="nav-links">
+                        <Link to="/" onClick={() => setMenuOpen(false)}><FaHome className="icon" /> Home</Link>
+                        <Link to="/bus-schedule" onClick={() => setMenuOpen(false)}><FaBus className="icon" /> Bus Schedule</Link>
+                        <Link to="/map" onClick={() => setMenuOpen(false)}><FaMap className="icon" /> Map</Link>
+                        <Link to="/notifications" onClick={() => setMenuOpen(false)}><FaBell className="icon" /> Notifications</Link>
+                        <Link to="/faq" onClick={() => setMenuOpen(false)}><FaQuestionCircle className="icon" /> FAQ</Link>
+                        <Link to="/feedback" onClick={() => setMenuOpen(false)}><FaComment className="icon" /> Feedback</Link>
+                    </div>
+                )}
+            </div>
 
-            {menuOpen && (
-                <div className="nav-links">
-                    <Link to="/" onClick={closeMenu}><FaHome className="icon" /> Home</Link>
-                    <Link to="/bus-schedule" onClick={closeMenu}><FaBus className="icon" /> Bus Schedule</Link>
-                    <Link to="/map" onClick={closeMenu}><FaMap className="icon" /> Map</Link>
-                    <Link to="/notifications" onClick={closeMenu}><FaBell className="icon" /> Notifications</Link>
-                    <Link to="/faq" onClick={closeMenu}><FaQuestionCircle className="icon" /> FAQ</Link>
-                    <Link to="/feedback" onClick={closeMenu}><FaComment className="icon" /> Feedback</Link>
-                </div>
-            )}
+            <h1 className="navbar-title">{currentTitle}</h1>
         </div>
     );
 }
