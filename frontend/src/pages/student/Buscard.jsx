@@ -1,5 +1,6 @@
 import React from 'react';
-import '../assets/styles/BusCard.css';
+import '../../assets/styles/BusCard.css';
+
 
 const BusCard = ({ bus }) => (
     <div className="bus-card">

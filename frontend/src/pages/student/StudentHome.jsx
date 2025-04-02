@@ -1,5 +1,6 @@
 import React from 'react';
-import '../assets/styles/StudentHome.css';
+import '../../assets/styles/StudentHome.css';
+import { Link } from "react-router-dom";
 
 const upcomingBuses = [
     { busNumber: 'LH Bus', route: 'Departure: ECLC → Arrival: LH', time: '10:00 AM - 10:05 AM' },
@@ -21,7 +22,8 @@ const StudentHome = () => {
                         <h3>{bus.busNumber}</h3>
                         <p>{bus.route}</p>
                         <p>{bus.time}</p>
-                        <button className="view-map-btn">View in Map</button>
+                        <Link to="/map" > <button className="view-map-btn">View in Map</button></Link>
+                       
                     </div>
                 ))}
             </div>

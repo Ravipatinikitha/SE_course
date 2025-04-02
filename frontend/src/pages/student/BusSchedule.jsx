@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../assets/styles/BusSchedule.css";
+import "../../assets/styles/BusSchedule.css";
 
 const BusSchedule = () => {
     const busScheduleData = [

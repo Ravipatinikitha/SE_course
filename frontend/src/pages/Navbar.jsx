@@ -44,7 +44,7 @@ function Navbar() {
                 <FaBars className="menu-icon" onClick={toggleMenu} />
                 {menuOpen && (
                     <div className="nav-links">
-                        <Link to="/" onClick={() => setMenuOpen(false)}><FaHome className="icon" /> Home</Link>
+                        <Link to="/student-dashboard" onClick={() => setMenuOpen(false)}><FaHome className="icon" /> Home</Link>
                         <Link to="/bus-schedule" onClick={() => setMenuOpen(false)}><FaBus className="icon" /> Bus Schedule</Link>
                         <Link to="/map" onClick={() => setMenuOpen(false)}><FaMap className="icon" /> Map</Link>
                         <Link to="/notifications" onClick={() => setMenuOpen(false)}><FaBell className="icon" /> Notifications</Link>

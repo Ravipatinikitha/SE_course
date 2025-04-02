@@ -1,44 +1,35 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles/Login.css';
+import { loginUser } from "../services/api";
 import uiBackground from '../assets/images/bus-bg.png';
-
+import googleLogo from "../assets/images/google.webp";
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
-  
+    setError("");
+    setIsLoading(true);
+    
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/login', {
-        username,
-        password
-      });
-  
-      // Handle successful login
-      localStorage.setItem('user', JSON.stringify({
-        username: response.data.username,
-        role: response.data.role
-      }));
-  
+      const userData = await loginUser(id, password);
+      
       // Redirect based on role
-      if (response.data.role === 'student') {
+      if (userData.role === 'student') {
         navigate('/student-dashboard');
-      } else if (response.data.role === 'driver') {
-        navigate('/driver-dashboard');
+      } else if (userData.role === 'driver') {
+        navigate( '/driver-dashboard' );
       }
-  
-    } catch (err) {
-      setError(err.response?.data?.error || 'Login failed');
+    } catch (error) {
+      console.error("Login failed:", error);
+      setError(error.message || "Login failed. Please try again.");
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -51,55 +42,44 @@ const Login = () => {
       <div className="content-layer">
         <h1 className="main-heading">Welcome to NITC Bus System</h1>
         <p className="sub-heading">Track your campus buses in real-time</p>
-
-        <form className="form-container" onSubmit={handleSubmit}>
+        {error && <div className="error-message">{error}</div>}
+        <form onSubmit={handleLogin}>
           <input
             type="text"
-            placeholder="Enter your username"
-            className="input-field"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="ID"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
             required
           />
-
           <input
             type="password"
-            placeholder="Enter your Password"
-            className="input-field"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
 
-          {error && <div className="error-message">{error}</div>}
+          <button
+            type="button"
+            className="forgot-password"
+            onClick={() => console.log("Forgot Password clicked!")}
+          >
+            Forgot Password?
+          </button>
 
           <button 
             type="submit" 
-            className="login-btn"
-            disabled={loading}
+            className="login-btn" 
+            disabled={isLoading}
           >
-            {loading ? 'Logging in...' : 'LOGIN'}
+            {isLoading ? 'Logging in...' : 'Log In'}
           </button>
-
-          <a href="#forgot" className="forgot-link">Forgot password?</a>
-
-          <a href="/student-dashboard">
-    <button type="button">Go to Dashboard</button>
-</a>
-
-          <div className="social-section">
-            <div className="divider-line">
-              <span>or continue with</span>
-            </div>
-            
-            <div className="social-btns">
-              <button className="social-btn google">
-                <span className="social-icon">G</span>
-                Google
-              </button>
-            </div>
-          </div>
         </form>
+
+        <button className="google-btn">
+          <img src={googleLogo} alt="Google Logo" />
+          Sign in with Google
+        </button>
       </div>
     </div>
   );

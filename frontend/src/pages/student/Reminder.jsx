@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/Reminder.css';
+import '../../assets/styles/Reminder.css';
 
 const Reminder = () => {
     return (
