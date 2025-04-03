@@ -33,10 +33,11 @@ function Navbar() {
         "/notifications": "Notifications",
         "/faq": "FAQ",
         "/feedback": "Feedback",
+        "/reminder": "Reminder",
     };
 
     // Get the current page title or default to "Bus Scheduling App"
-    const currentTitle = pageTitles[location.pathname] || "Bus Scheduling App";
+    const currentTitle = pageTitles[location.pathname] || "Upcoming Buses";
 
     return (
         <div className="navbar">
