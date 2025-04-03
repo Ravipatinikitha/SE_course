@@ -3,27 +3,33 @@ import '../../assets/styles/StudentHome.css';
 import { Link } from "react-router-dom";
 
 const upcomingBuses = [
-    { busNumber: 'LH Bus', route: 'Departure: ECLC → Arrival: LH', time: '10:00 AM - 10:05 AM' },
-    { busNumber: 'MHB Bus', route: 'Departure: ECLC → Arrival: MBH', time: '10:00 AM - 10:10 AM' },
+    { 
+        id: 1, 
+        busNumber: 'LH Bus', 
+        route: 'Departure: ECLC → Arrival: LH', 
+        time: '10:00 AM - 10:05 AM' 
+    },
+    { 
+        id: 2, 
+        busNumber: 'MHB Bus', 
+        route: 'Departure: ECLC → Arrival: MBH', 
+        time: '10:00 AM - 10:10 AM' 
+    },
 ];
 
 const StudentHome = () => {
     return (
         <div className="student-home">
-            {/* Blue Navbar with Heading inside */}
-            <div className="nav-bar">
-                <h1 className="page-heading">Upcoming Buses</h1>
-            </div>
 
-            {/* Upcoming Buses Section */}
             <div className="upcoming-section">
-                {upcomingBuses.map((bus, index) => (
-                    <div className="bus-card" key={index}>
+                {upcomingBuses.map((bus) => (
+                    <div className="bus-card" key={bus.id}>
                         <h3>{bus.busNumber}</h3>
                         <p>{bus.route}</p>
                         <p>{bus.time}</p>
-                        <Link to="/map" > <button className="view-map-btn">View in Map</button></Link>
-                       
+                        <Link to="/map">
+                            <button className="view-map-btn">View in Map</button>
+                        </Link>
                     </div>
                 ))}
             </div>
