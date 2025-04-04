@@ -23,7 +23,7 @@ const Login = () => {
       if (userData.role === 'student') {
         navigate('/student-dashboard');
       } else if (userData.role === 'driver') {
-        navigate( '/driver-dashboard' );
+        navigate( '/driver-home' );
       }
     } catch (error) {
       console.error("Login failed:", error);
