@@ -1,8 +1,7 @@
-/* Fixed-size FAQ container */
+/* Main container for the FAQ page */
 .faq-container {
-    position: relative;
-    width: 360px;         /* Mobile-friendly width */
-    height: 640px;        /* Fixed height */
+    width: 360px; /* Mobile viewport */
+    height: 640px; /* Ensure full height */
     margin: 0 auto;
     background-color: #f5f5f5;
     border-radius: 12px;
@@ -12,25 +11,26 @@
     overflow: hidden;
 }
 
-/* Scrollable section for FAQ content */
+/* Scrollable section */
 .faq-scrollable {
     flex: 1;
-    overflow-y: scroll;  /* Enable scrolling */
+    overflow-y: auto;
     padding: 20px;
     box-sizing: border-box;
-    
-    /* Hide scrollbar for different browsers */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 11 */
 }
 
-/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+/* Hide the scrollbar */
 .faq-scrollable::-webkit-scrollbar {
     display: none;
 }
 
-/* FAQ items */
-.faq-item {
+.faq-scrollable {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Question styling */
+.question {
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -38,21 +38,42 @@
     margin-bottom: 10px;
 }
 
-/* Heading */
-h1 {
-    color: #3F51B5;
+/* Any Doubts Section */
+.any-doubts {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
     text-align: center;
-    margin: 20px 0 10px;
 }
 
-/* FAQ item headings */
-h3 {
-    color: #3F51B5;
-    margin-bottom: 5px;
+.any-doubts textarea {
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: none;
 }
 
-/* FAQ item text */
-p {
-    color: #333;
+.any-doubts button {
+    width: 100%;
+    background-color: #3F51B5;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.any-doubts button:hover {
+    background-color: #303F9F;
+}
+
+/* Make sure questions are not bold */
+.question p {
     font-size: 14px;
+    font-weight: normal; /* Ensures text is not bold */
 }
