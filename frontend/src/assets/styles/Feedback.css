@@ -1,71 +1,82 @@
+/* Container for Feedback Page */
 .feedback {
-    padding: 20px;
-    background-color: #f0f8ff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 80px;
-    padding: 20px; 
-}
-
-.feedback {
-    position: relative;
-    width: 360px; /* Mobile viewport width */
+    width: 360px; /* Mobile-friendly width */
+    height: 640px; /* Fixed height */
     margin: 0 auto;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-  }
-
-h2 {
-    color: #3b82f6;
-    text-align: center;
-    margin-bottom: 20px;
 }
 
+/* Scrollable section */
+.feedback-scrollable {
+    flex: 1;
+    overflow-y: scroll;  /* Enable scrolling */
+    padding: 20px;
+    box-sizing: border-box;
+    
+    /* Hide scrollbar for different browsers */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 11 */
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.feedback-scrollable::-webkit-scrollbar {
+    display: none;
+}
+
+/* Feedback Question Styling */
 .question {
-    margin-bottom: 15px;
     background-color: #ffffff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 10px 15px;
+    padding: 15px;
+    margin-bottom: 10px;
 }
 
-p {
-    margin-bottom: 5px;
-    font-weight: 500;
-}
-
-textarea {
-    width: 100%;
-    height: 80px;
-    margin-top: 10px;
-    border: 1px solid #e5e7eb;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-button {
-    background-color: #3b82f6;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
-}
-
-/* Star Rating */
+/* Star Ratings */
 .star-rating {
     display: flex;
-    gap: 5px;
-    margin-top: 5px;
+    justify-content: start;
 }
 
 .star {
     font-size: 24px;
-    color: #d1d5db;
+    color: #ccc;
     cursor: pointer;
+    transition: color 0.3s;
 }
 
 .star.filled {
-    color: #ffd700;
+    color: #FFD700;
+}
+
+/* Text Area for Comments */
+textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    resize: none;
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    background-color: #3F51B5;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #303F9F;
 }
