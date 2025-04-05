@@ -1,20 +1,19 @@
 .student-home {
-    padding: 20px;
-    background-color: #f0f4f8; /* Light grey background for better visibility */
-}
-
-.student-home {
     position: relative;
     width: 360px; /* Mobile viewport width */
     height: 640px;
     margin: 0 auto;
     overflow: hidden;
-  }
+    padding: 20px;
+    background-color: #f0f4f8; /* Light grey background for better visibility */
+}
 
+/* Ensures proper spacing between bus cards */
 .bus-list {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center the cards horizontally */
+    gap: 15px; /* Adds uniform spacing between elements */
 }
 
 .bus-card {
@@ -37,16 +36,12 @@
     color: #555;
 }
 
-.home-heading {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: white;
-}
-
-.upcoming-section .bus-card{
+/* Proper spacing for the upcoming section */
+.upcoming-section .bus-card {
     height: 150px;
 }
 
-
+/* Ensures equal spacing between bus cards */
+.bus-card:not(:last-child) {
+    margin-bottom: 15px;
+}
