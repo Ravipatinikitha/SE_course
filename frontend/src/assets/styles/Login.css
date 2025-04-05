@@ -203,9 +203,9 @@ input {
 
 .forgot-password {
   display: block;
-  text-align: right;
+  text-align: center;
   font-size: 14px;
-  color: black;
+  color: white;
   text-decoration: none;
   margin-bottom: 15px;
 }
@@ -232,6 +232,7 @@ input {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
+  color: #000;
   background: white;
   border: 1px solid #ccc;
   border-radius: 5px;
