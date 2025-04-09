@@ -4,6 +4,8 @@ import '../assets/styles/Login.css';
 import { loginUser } from "../services/api";
 import uiBackground from '../assets/images/bus-bg.png';
 import googleLogo from "../assets/images/google.webp";
+
+
 const Login = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
@@ -15,15 +17,24 @@ const Login = () => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
-    
+  
     try {
       const userData = await loginUser(id, password);
-      
-      // Redirect based on role
-      if (userData.role === 'student') {
+  
+      // ✅ Store each property separately
+       // if available
+  
+      // Navigate based on role
+      if (userData.role === 'ROLE_ADMIN') {
+        navigate('/admin/dashboard');
+      } else if (userData.role === 'student') {
         navigate('/student-dashboard');
       } else if (userData.role === 'driver') {
+<<<<<<< HEAD
         navigate( '/driver-home' );
+=======
+        navigate('/driver-dashboard');
+>>>>>>> 5e46033 (Initial commit)
       }
     } catch (error) {
       console.error("Login failed:", error);
@@ -32,6 +43,8 @@ const Login = () => {
       setIsLoading(false);
     }
   };
+  
+  
 
   return (
     <div className="login-screen">

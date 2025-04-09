@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import StudentDashboard from "./pages/student/StudentHome";  
+<<<<<<< HEAD
+=======
+import AdminDashboard from "./components/admin/AdminDashboard";  
+>>>>>>> 5e46033 (Initial commit)
 import DriverHome from "./pages/Driver/DriverHome";  
 import DriverSchedule from "./pages/Driver/DriverSchedule";  
 import BusSchedule from "./pages/student/BusSchedule";
@@ -8,6 +12,9 @@ import Map from "./pages/MapPage";
 import Notifications from "./pages/student/Notifications";
 import FAQ from "./pages/student/FAQ";
 import Feedback from "./pages/student/Feedback";
+import DriverNotifications from "./pages/Driver/Notifications";
+import DriverFAQ from "./pages/Driver/FAQ";
+import DriverFeedback from "./pages/Driver/Feedback";
 import Reminder from "./pages/student/Reminder";
 import StudentNavbar from "./pages/StudentNavbar";  
 import DriverNavbar from "./pages/DriverNavbar";  
@@ -27,7 +34,11 @@ const AppContent = () => {
 
     // Define routes where the Navbar should be hidden (e.g., Login)
     const hideNavbarRoutes = ["/", "/login"];
+<<<<<<< HEAD
     const driverRoutes = ["/driver-dashboard", "/driver-home", "/driver-schedule"];
+=======
+    const driverRoutes = ["/driver-dashboard", "/driver-home", "/driver-schedule","/dnotifications","/dfaq","/dfeedback"];
+>>>>>>> 5e46033 (Initial commit)
     
     let NavbarComponent = null;
     if (!hideNavbarRoutes.includes(location.pathname)) {
@@ -52,12 +63,23 @@ const AppContent = () => {
                 <Route path="/notifications" element={<Notifications />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/feedback" element={<Feedback />} />
+                
                 <Route path="/reminder" element={<Reminder />} />
                 <Route path="/buscard" element={<BusCard />} />
                 
                 {/* Driver Routes */}
+<<<<<<< HEAD
                 <Route path="/driver-home" element={<DriverHome />} />
                 <Route path="/driver-schedule" element={<DriverSchedule />} />
+=======
+                <Route path="/driver-dashboard" element={<DriverHome />} />
+                <Route path="/driver-schedule" element={<DriverSchedule />} />
+                <Route path="/dnotifications" element={<DriverNotifications />} />
+                <Route path="/dfaq" element={<DriverFAQ />} />
+                <Route path="/dfeedback" element={<DriverFeedback />} />
+                <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
+>>>>>>> 5e46033 (Initial commit)
             </Routes>
         </>
     );

@@ -53,3 +53,119 @@
     border-radius: 5px;
     width: 48%;
 }
+<<<<<<< HEAD
+=======
+
+.driver-schedule-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.error-message button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.loading-spinner, .no-schedule {
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
+
+.current-bus-card {
+    background-color: #e8f5e9;
+    border-left: 5px solid #2e7d32;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.current-bus-card h3 {
+    color: #2e7d32;
+    margin-top: 0;
+}
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.schedule-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.schedule-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.schedule-card p {
+    margin: 8px 0;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.start-btn, .complete-btn, .delay-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.start-btn {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.start-btn:hover {
+    background-color: #1b5e20;
+}
+
+.complete-btn {
+    background-color: #0277bd;
+    color: white;
+}
+
+.complete-btn:hover {
+    background-color: #01579b;
+}
+
+.delay-btn {
+    background-color: #ff8f00;
+    color: white;
+}
+
+.delay-btn:hover {
+    background-color: #e65100;
+}
+>>>>>>> 5e46033 (Initial commit)

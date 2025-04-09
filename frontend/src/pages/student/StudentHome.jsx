@@ -1,7 +1,6 @@
-import React from 'react';
-import '../../assets/styles/StudentHome.css';
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 
+<<<<<<< HEAD
 const upcomingBuses = [
     { 
         id: 1, 
@@ -16,9 +15,26 @@ const upcomingBuses = [
         time: '10:00 AM - 10:10 AM' 
     },
 ];
+=======
+const UpcomingBuses = () => {
+    const [buses, setBuses] = useState([]);
 
-const StudentHome = () => {
+    useEffect(() => {
+        fetch('http://localhost:8080/api/student-dashboard')
+
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => setBuses(data))
+            .catch(error => console.error('Fetch error:', error));
+    }, []);
+>>>>>>> 5e46033 (Initial commit)
+
     return (
+<<<<<<< HEAD
         <div className="student-home">
 
             <div className="upcoming-section">
@@ -33,8 +49,34 @@ const StudentHome = () => {
                     </div>
                 ))}
             </div>
+=======
+        <div>
+            <h2>Upcoming Bus Schedules</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Bus Name</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Start Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {buses.map((bus, index) => (
+                        <tr key={index}>
+                            <td>{bus.busName}</td>
+                            <td>{bus.departureLocation}</td>
+                            <td>{bus.arrivalLocation}</td>
+                            <td>{bus.startTime}</td>
+                            <td>{bus.status}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+>>>>>>> 5e46033 (Initial commit)
         </div>
     );
 };
 
-export default StudentHome;
+export default UpcomingBuses;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import '../../assets/styles/DriverSchedule.css';
 
@@ -27,3 +28,56 @@ const DriverSchedule = () => {
 };
 
 export default DriverSchedule;
+=======
+import React, { useState, useEffect } from 'react';
+import { driverAPI } from '../../services/api';
+import '../../assets/styles/DriverSchedule.css';
+
+const DriverScheduleView = () => {
+  const [schedule, setSchedule] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchDriverSchedule = async () => {
+      try {
+        setLoading(true);
+        const data = await driverAPI.getDriverSchedule();
+        setSchedule(data);
+      } catch (err) {
+        setError(err.message || "Failed to load schedule");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDriverSchedule();
+  }, []);
+
+  if (loading) return <div className="loading">Loading schedule...</div>;
+  if (error) return <div className="error">{error}</div>;
+
+  return (
+    <div className="driver-schedule-container">
+      <h2>Your Bus Schedule</h2>
+      
+      {schedule.length === 0 ? (
+        <p>No scheduled buses assigned</p>
+      ) : (
+        <div className="schedule-list">
+          {schedule.map(bus => (
+            <div key={bus.id} className="schedule-card">
+              <h3>{bus.busName}</h3>
+              <p>Route: {bus.departureLocation} → {bus.arrivalLocation}</p>
+              <p>Time: {bus.startTime} - {bus.endTime}</p>
+              <p>Status: {bus.status}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default DriverScheduleView;
+>>>>>>> 5e46033 (Initial commit)
