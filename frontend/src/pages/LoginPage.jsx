@@ -30,11 +30,7 @@ const Login = () => {
       } else if (userData.role === 'student') {
         navigate('/student-dashboard');
       } else if (userData.role === 'driver') {
-<<<<<<< HEAD
-        navigate( '/driver-home' );
-=======
         navigate('/driver-dashboard');
->>>>>>> 5e46033 (Initial commit)
       }
     } catch (error) {
       console.error("Login failed:", error);

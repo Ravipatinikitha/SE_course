@@ -2,10 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../assets/styles/Navbar.css";
 import { FaBars, FaClipboardList, FaBusAlt } from "react-icons/fa";
-<<<<<<< HEAD
-=======
 import { FaBell, FaQuestionCircle, FaComment } from "react-icons/fa";
->>>>>>> 5e46033 (Initial commit)
 
 function DriverNavbar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -31,16 +28,12 @@ function DriverNavbar() {
 
     // Page Titles Based on Route
     const pageTitles = {
-<<<<<<< HEAD
         "/driver-home": "Your Bus",
         "/driver-schedule": "Schedule",
-=======
         "/driver-dashboard": "Your Bus",
-        "/driver-schedule": "Schedule",
         "/dnotifications": "Notifications",
         "/dfaq": "FAQ",
         "/dfeedback": "Feedback",
->>>>>>> 5e46033 (Initial commit)
     };
 
     // Get the current page title or default to "Driver Panel"
@@ -52,23 +45,16 @@ function DriverNavbar() {
                 <FaBars className="menu-icon" onClick={toggleMenu} />
                 {menuOpen && (
                     <div className="nav-links">
-<<<<<<< HEAD
-                        <Link to="/driver-home" onClick={() => setMenuOpen(false)}>
-=======
                         <Link to="/driver-dashboard" onClick={() => setMenuOpen(false)}>
->>>>>>> 5e46033 (Initial commit)
                             <FaClipboardList className="icon" /> Home
                         </Link>
                         <Link to="/driver-schedule" onClick={() => setMenuOpen(false)}>
                             <FaBusAlt className="icon" /> Bus Schedule
                         </Link>
-<<<<<<< HEAD
-=======
                          <Link to="/dnotifications" onClick={() => setMenuOpen(false)}><FaBell className="icon" /> Notifications</Link>
                         <Link to="/dfaq" onClick={() => setMenuOpen(false)}><FaQuestionCircle className="icon" /> FAQ</Link>
                         <Link to="/dfeedback" onClick={() => setMenuOpen(false)}><FaComment className="icon" /> Feedback</Link>
                                           
->>>>>>> 5e46033 (Initial commit)
                     </div>
                 )}
             </div>

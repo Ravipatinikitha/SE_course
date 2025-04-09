@@ -1,11 +1,8 @@
 import React from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import "../assets/styles/MapPage.css";
-<<<<<<< HEAD
-=======
 // Get real-time location of a bus
 // const busLocation = await busAPI.getBusLocation(busId);
->>>>>>> 5e46033 (Initial commit)
 
 const containerStyle = {
     width: "100%",

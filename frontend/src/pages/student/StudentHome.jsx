@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-<<<<<<< HEAD
+
 const upcomingBuses = [
     { 
         id: 1, 
@@ -15,7 +16,7 @@ const upcomingBuses = [
         time: '10:00 AM - 10:10 AM' 
     },
 ];
-=======
+
 const UpcomingBuses = () => {
     const [buses, setBuses] = useState([]);
 
@@ -31,13 +32,13 @@ const UpcomingBuses = () => {
             .then(data => setBuses(data))
             .catch(error => console.error('Fetch error:', error));
     }, []);
->>>>>>> 5e46033 (Initial commit)
+
 
     return (
-<<<<<<< HEAD
+
         <div className="student-home">
 
-            <div className="upcoming-section">
+            {/* <div className="upcoming-section">
                 {upcomingBuses.map((bus) => (
                     <div className="bus-card" key={bus.id}>
                         <h3>{bus.busNumber}</h3>
@@ -48,8 +49,8 @@ const UpcomingBuses = () => {
                         </Link>
                     </div>
                 ))}
-            </div>
-=======
+            </div> */}
+
         <div>
             <h2>Upcoming Bus Schedules</h2>
             <table border="1">
@@ -74,7 +75,8 @@ const UpcomingBuses = () => {
                     ))}
                 </tbody>
             </table>
->>>>>>> 5e46033 (Initial commit)
+
+        </div>
         </div>
     );
 };
