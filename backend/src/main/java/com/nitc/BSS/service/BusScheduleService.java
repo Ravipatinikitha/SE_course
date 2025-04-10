@@ -13,4 +13,5 @@ public interface BusScheduleService {
     List<BusScheduleDTO> getBusesByRoute(String departure, String arrival);
     List<BusScheduleDTO> getBusHistory(String busName);
     BusScheduleDTO convertToDTO(BusSchedule bus);
+    List<BusScheduleDTO> getAllSchedules();
 }

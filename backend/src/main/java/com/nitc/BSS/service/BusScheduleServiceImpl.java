@@ -10,6 +10,7 @@ import com.nitc.BSS.model.BusSchedule;
 import com.nitc.BSS.model.BusSchedule.BusStatus;
 import com.nitc.BSS.repository.BusScheduleRepository;
 
+
 @Service
 public class BusScheduleServiceImpl implements BusScheduleService {
 
@@ -21,13 +22,13 @@ public class BusScheduleServiceImpl implements BusScheduleService {
 
     @Override
     public List<BusScheduleDTO> getUpcomingBuses() {
-        return busScheduleRepository
-            .findByStatusInOrderByStartTimeAsc(List.of(BusStatus.NOT_STARTED, BusStatus.STARTED))
-            .stream()
-            .limit(8)
+        List<BusSchedule> notStartedBuses = busScheduleRepository.findTop5ByStatusOrderByIdAsc(BusSchedule.BusStatus.NOT_STARTED);
+
+        return notStartedBuses.stream()
             .map(this::convertToDTO)
             .collect(Collectors.toList());
     }
+    
 
     @Override
     public List<BusScheduleDTO> getRunningBuses() {
@@ -82,5 +83,16 @@ public BusScheduleDTO convertToDTO(BusSchedule bus) {
     dto.setDriverId(bus.getDriverId()); // 🔥 NEW
     return dto;
 }
+
+@Override
+public List<BusScheduleDTO> getAllSchedules() {
+    List<BusSchedule> schedules = busScheduleRepository.findAll();
+    return schedules.stream()
+        .map(this::convertToDTO)
+        .collect(Collectors.toList());
+}
+
+
+
 
 }

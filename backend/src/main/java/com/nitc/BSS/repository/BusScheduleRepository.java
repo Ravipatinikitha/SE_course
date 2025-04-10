@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.nitc.BSS.model.BusSchedule;
@@ -36,9 +37,15 @@ public interface BusScheduleRepository extends JpaRepository<BusSchedule, Long> 
     List<BusSchedule> findByDriverId(String driverId);
 
     // ✅ New method to fetch top 5 upcoming schedules
-    List<BusSchedule> findTop5ByStartTimeAfterOrderByStartTimeAsc(LocalTime now);
+    List<BusSchedule> findTop5ByStatusOrderByIdAsc(BusSchedule.BusStatus status);
+
 
     Optional<BusSchedule> findFirstByDriverId(String driverId);
-    
+    @Query("SELECT s FROM BusSchedule s ORDER BY " +
+    "CASE WHEN s.status = 'STARTED' THEN 0 WHEN s.status = 'NOT_STARTED' THEN 1 WHEN s.status = 'COMPLETED' THEN 2 ELSE 3 END, s.startTime ASC")
+List<BusSchedule> findAllOrderByStatusAndTime();
+
+
+
 
 }

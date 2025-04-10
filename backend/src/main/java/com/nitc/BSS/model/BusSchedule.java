@@ -38,7 +38,8 @@ public class BusSchedule {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private BusStatus status = BusStatus.NOT_STARTED;
+    private BusStatus status;
+    
 
     @Column(name = "driver_id", nullable = false)
     private String driverId;
