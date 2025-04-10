@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import StudentDashboard from "./pages/student/StudentHome";  
+import StudentDashboard from "./pages/student/StudentDashboard";  
 import AdminDashboard from "./components/admin/AdminDashboard";  
 import DriverHome from "./pages/Driver/DriverHome";  
 import DriverSchedule from "./pages/Driver/DriverSchedule";  

@@ -29,9 +29,6 @@ public class StudentController {
         return ResponseEntity.ok(busScheduleService.getUpcomingBuses());
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
-
-    
     @GetMapping("/api/bus-schedule")
 public ResponseEntity<List<BusScheduleDTO>> getAllSchedules() {
     List<BusScheduleDTO> schedules = busScheduleService.getAllSchedules();

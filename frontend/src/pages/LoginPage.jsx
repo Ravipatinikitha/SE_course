@@ -30,6 +30,7 @@ const Login = () => {
       } else if (userData.role === 'student') {
         navigate('/student-dashboard');
       } else if (userData.role === 'driver') {
+        navigate( '/driver-home' );
         navigate('/driver-dashboard');
       }
     } catch (error) {

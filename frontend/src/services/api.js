@@ -156,15 +156,15 @@ const handleResponse = async (response) => {
 export const loginUser = async (id, password) => {
   try {
     console.log('Attempting login with:', { id, password });
-    
+
     const response = await fetch(`${API_BASE_URL}/auth/login`, {
       method: "POST",
       credentials: 'include',
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         id: id.trim(),
         password: password
       }),
@@ -172,40 +172,41 @@ export const loginUser = async (id, password) => {
 
     console.log('Login response status:', response.status);
 
-    const data = await response.json();
-    console.log('Parsed response data:', data);
+    const contentType = response.headers.get("content-type");
+
+    let data;
+    if (contentType && contentType.includes("application/json")) {
+      data = await response.json();
+    } else {
+      const text = await response.text();
+      console.error("Expected JSON, got:", text);
+      throw new Error("Unexpected response format from server.");
+    }
 
     if (!response.ok) {
       throw new Error(data.error || 'Invalid credentials');
     }
 
-    // Store user data
     const userData = {
-      id: data.id || '',
+      userId: data.id || '',
       role: data.role || '',
       username: data.email ? data.email.split('@')[0] : id,
-    
     };
 
-    // Save to localStorage
-    localStorage.setItem("userId", userData.id);
+    localStorage.setItem("userId", userData.userId);
     localStorage.setItem("role", userData.role);
     localStorage.setItem("username", userData.username);
-    
-    
 
     console.log('Login successful. Stored data:', userData);
     return userData;
 
   } catch (error) {
     console.error("Login Error:", error);
-    // Clear auth data on failure
-    ['userId', 'role', 'username'].forEach(
-      key => localStorage.removeItem(key)
-    );
+    ['userId', 'role', 'username'].forEach(key => localStorage.removeItem(key));
     throw new Error(error.message || 'Login failed. Please check your credentials.');
   }
 };
+
 
 export const getAllUsers = async () => {
   const response = await fetch(`${API_BASE_URL}/admin/users`);
@@ -216,19 +217,19 @@ export const getAllUsers = async () => {
 // src/api.js or wherever you keep API calls
 
 export const fetchUpcomingBuses = async () => {
-  try {
-      const response = await fetch('/api/student-dashboard');
+    try {
+        const response = await fetch('/api/student-dashboard');
 
-      if (!response.ok) {
-          throw new Error('Failed to fetch upcoming buses');
-      }
+        if (!response.ok) {
+            throw new Error('Failed to fetch upcoming buses');
+        }
 
-      const data = await response.json();
-      return data;
-  } catch (error) {
-      console.error('API fetch error:', error);
-      throw error;
-  }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('API fetch error:', error);
+        throw error;
+    }
 };
 
 
@@ -367,19 +368,6 @@ export const driverAPI = {
     });
     return handleResponse(response);
   }
-};
-
-export const driverfetch = {
-  getDriverInfo: async (driverId) => {
-    const response = await fetch(`${API_BASE_URL}/driver/info/${driverId}`, {
-      method: 'GET',
-      credentials: 'include', // optional depending on auth method
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    return handleResponse(response);
-  },
 };
 
 

@@ -1,38 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import "../../assets/styles/BusSchedule.css";
 
 const BusSchedule = () => {
-    const busScheduleData = [
-        { bus: "MHB Bus", location: "ECLC", time: "10:00 AM" },
-        { bus: "LH Bus", location: "LH", time: "10:05 AM" },
-        { bus: "LH(SOMS) Bus", location: "SOMS", time: "10:10 AM" },
-    ];
+    const [buses, setBuses] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:8080/api/bus-schedule')
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(data => setBuses(data))
+            .catch(error => console.error('Fetch error:', error));
+    }, []);
+    
 
     return (
-        <div className="bus-schedule-container">
-            <div className="bus-schedule-header">
+        <div className="schedule-wrapper">
+            <div className="schedule-header">
+                <h2>Bus Schedule</h2>
                 <Link to="/reminder" className="add-reminder">+ Add Reminder</Link>
             </div>
 
-            <table className="bus-schedule-table">
-                <thead>
-                    <tr>
-                        <th>Bus</th>
-                        <th>Location</th>
-                        <th>Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {busScheduleData.map((bus, index) => (
-                        <tr key={index}>
-                            <td>{bus.bus}</td>
-                            <td>{bus.location}</td>
-                            <td>{bus.time}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <div className="schedule-table">
+                <div className="table-header">
+                    <div>Bus</div>
+                    <div>Location</div>
+                    <div>Time</div>
+                </div>
+                {buses.map((bus, index) => (
+                    <div key={index} className="table-row">
+                        <div>{bus.busName}</div>
+                        <div>{bus.departureLocation}</div>
+                        <div>{bus.startTime}</div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

@@ -1,49 +1,56 @@
-.bus-schedule-container {
-    width: 90%;
-    margin: auto;
-    text-align: center;
-    background-color: #f5f5f5;
-    padding: 10px;
-    margin-top: 80px; 
-    padding: 20px; 
-}
-
-.bus-schedule-container {
-    position: relative;
-    width: 360px; /* Mobile viewport width */
-    height: 640px; /* Mobile viewport height */
+.schedule-wrapper {
+    padding: 16px;
+    max-width: 400px;
     margin: 0 auto;
-    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
   }
-
-.bus-schedule-header {
+  
+  .schedule-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #5a84e7;
+    background-color: #4f7cf7;
+    padding: 10px 16px;
+    border-radius: 8px 8px 0 0;
     color: white;
-    padding: 10px;
+  }
+  
+  .schedule-header h2 {
     font-size: 18px;
-}
-
-.add-reminder {
-    color: white;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .add-reminder {
+    font-size: 14px;
     text-decoration: none;
-    font-weight: bold;
-}
-
-.bus-schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.bus-schedule-table th, .bus-schedule-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-.bus-schedule-table th {
-    background: #f0f0f0;
-}
+    color: white;
+    font-weight: 500;
+  }
+  
+  .schedule-table {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+  }
+  
+  .table-header,
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+  }
+  
+  .table-header {
+    background-color: #e1eaff;
+    font-weight: 600;
+  }
+  
+  .table-row:last-child {
+    border-bottom: none;
+  }
+  
