@@ -145,6 +145,8 @@
 const API_BASE_URL = "http://localhost:8080/api";
 
 // Helper function to handle responses
+
+
 const handleResponse = async (response) => {
   if (!response.ok) {
     const error = await response.json().catch(() => ({}));
@@ -157,20 +159,14 @@ export const loginUser = async (id, password) => {
   try {
     console.log('Attempting login with:', { id, password });
 
-    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+    const response = await fetch("http://localhost:8080/api/auth/login", {
       method: "POST",
-      credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        id: id.trim(),
-        password: password
-      }),
+      credentials: "include",
+      body: JSON.stringify({ id, password })
     });
-
-    console.log('Login response status:', response.status);
 
     const contentType = response.headers.get("content-type");
 
@@ -206,6 +202,7 @@ export const loginUser = async (id, password) => {
     throw new Error(error.message || 'Login failed. Please check your credentials.');
   }
 };
+
 
 
 export const getAllUsers = async () => {
@@ -357,18 +354,28 @@ export const busAPI = {
   }
 };
 
+
+
 export const driverAPI = {
-  getDriverSchedule: async () => {
-    const response = await fetch(`${API_BASE_URL}/driver-schedule`, {
-      method: 'GET',
-      credentials: 'include', // essential for session auth
-      headers: {
-        'Content-Type': 'application/json'
-      }
+  getDriverSchedule: async (driverId) => {
+    const res = await fetch(`http://localhost:8080/api/driver-schedule/${driverId}`, {
+      credentials: 'include',
     });
-    return handleResponse(response);
+    if (!res.ok) throw new Error("Failed to fetch schedule");
+    return await res.json();
+  },
+
+  updateStatus: async (scheduleId, status) => {
+    const res = await fetch(`http://localhost:8080/api/driver-schedule/update-status/${scheduleId}?status=${status}`, {
+      method: 'PUT',
+      credentials: 'include',
+    });
+    if (!res.ok) throw new Error("Failed to update status");
+    return await res.text(); // or `res.json()` if your backend returns JSON
   }
 };
+
+
 
 
 // // Driver API Service

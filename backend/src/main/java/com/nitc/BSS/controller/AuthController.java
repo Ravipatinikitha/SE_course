@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nitc.BSS.model.User;
 import com.nitc.BSS.repository.UserRepository;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/api/auth")
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
@@ -31,31 +33,33 @@ public class AuthController {
 
 
     @PostMapping("/login")
-public ResponseEntity<?> login(@RequestBody Map<String, String> request) {
+public ResponseEntity<?> login(@RequestBody Map<String, String> request, HttpServletRequest httpRequest) {
+    System.out.println("🔥 Received login request");
     try {
         String id = request.get("id");
         String password = request.get("password");
 
-        System.out.println("Login request: id = " + id + ", password = " + password);
-
-        User user = userRepository.findByIdAndPassword(id, password);
-        if (user == null) {
+        User user = userRepository.findById(id).orElse(null);
+        if (user == null || !user.getPassword().equals(password)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "Invalid credentials"));
         }
+
+        // ✅ Store user ID in session
+        httpRequest.getSession().setAttribute("USER_ID", user.getId());
 
         return ResponseEntity.ok(Map.of(
             "id", user.getId(),
             "role", user.getRole(),
             "email", user.getEmail()
         ));
-
     } catch (Exception e) {
-        e.printStackTrace(); // This logs the full error in the backend terminal
+        e.printStackTrace();
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(Map.of("error", "Login failed: " + e.getMessage()));
     }
 }
 
+    
 
     @GetMapping("/user")
     public ResponseEntity<?> getUser(Principal principal) {

@@ -16,7 +16,10 @@ const DriverHome = () => {
     useEffect(() => {
         const fetchDriverData = async () => {
             try {
-                const res = await axios.get(`http://localhost:8080/api/driver/info/${driverId}`);
+                const res = await axios.get(`http://localhost:8080/api/driver/info/${driverId}`, {
+                    withCredentials: true
+                  });
+                                    
                 const data = res.data;
 
                 setDriverInfo({
@@ -42,7 +45,12 @@ const DriverHome = () => {
             </div>
 
             <div className="button-group">
-                <button className="start-btn">Start Ride</button>
+            <button
+                    className="start-btn"
+                    onClick={() => navigate('/driver-schedule')}
+                >
+                    Start Ride
+                </button>
                 <button className="cancel-btn" onClick={() => navigate('/')}>Cancel</button>
             </div>
         </div>

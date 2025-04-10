@@ -25,7 +25,7 @@ const StudentHome = () => {
             <p className="bus-detail"><strong>Arrival:</strong> {bus.arrivalLocation}</p>
             <p className="bus-detail"><strong>Event:</strong> {bus.startTime}</p>
             <p className="bus-detail"><strong>Schedule:</strong> {bus.endTime}</p>
-            <p className="bus-detail"><strong>Status:</strong> {bus.status}</p>
+            <p className="bus-detail"><strong>Status:</strong> {bus.status === 'STARTED' ? 'Running' : bus.status}</p>
           </div>
         ))}
       </div>

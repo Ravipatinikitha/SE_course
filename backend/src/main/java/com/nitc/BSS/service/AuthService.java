@@ -19,4 +19,5 @@ public class AuthService {
     public Optional<User> getUserById(String userId) {
         return userRepository.findById(userId);
     }
+    
 }

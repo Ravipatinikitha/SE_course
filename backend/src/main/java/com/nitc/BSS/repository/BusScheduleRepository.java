@@ -41,11 +41,8 @@ public interface BusScheduleRepository extends JpaRepository<BusSchedule, Long> 
 
 
     Optional<BusSchedule> findFirstByDriverId(String driverId);
-    @Query("SELECT s FROM BusSchedule s ORDER BY " +
-    "CASE WHEN s.status = 'STARTED' THEN 0 WHEN s.status = 'NOT_STARTED' THEN 1 WHEN s.status = 'COMPLETED' THEN 2 ELSE 3 END, s.startTime ASC")
-List<BusSchedule> findAllOrderByStatusAndTime();
+    @Query("SELECT s FROM BusSchedule s WHERE s.status IN ('STARTED', 'NOT_STARTED') ORDER BY s.id ASC")
+List<BusSchedule> findTop5ActiveSchedules(org.springframework.data.domain.Pageable pageable);
 
-
-
-
+BusSchedule findTopByDriverIdAndStatusNotOrderByStartTimeAsc(String driverId, BusSchedule.BusStatus status);
 }

@@ -21,18 +21,24 @@ const Login = () => {
     try {
       const userData = await loginUser(id, password);
   
-      // ✅ Store each property separately
-       // if available
+      // ✅ Save the token in localStorage
+      if (userData.token) {
+        localStorage.setItem("token", userData.token);
+      }
   
-      // Navigate based on role
+      // ✅ Optionally, save the user ID or role if needed later
+      localStorage.setItem("userId", id);
+      localStorage.setItem("role", userData.role);
+  
+      // 🔁 Navigate based on role
       if (userData.role === 'ROLE_ADMIN') {
         navigate('/admin/dashboard');
       } else if (userData.role === 'student') {
         navigate('/student-dashboard');
-      } else if (userData.role === 'driver') {
-        navigate( '/driver-home' );
+      } else if (userData.role === 'ROLE_DRIVER') {
         navigate('/driver-dashboard');
       }
+  
     } catch (error) {
       console.error("Login failed:", error);
       setError(error.message || "Login failed. Please try again.");
@@ -40,6 +46,7 @@ const Login = () => {
       setIsLoading(false);
     }
   };
+  
   
   
 

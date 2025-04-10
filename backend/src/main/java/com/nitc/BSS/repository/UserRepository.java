@@ -1,5 +1,6 @@
 package com.nitc.BSS.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     boolean existsByEmail(String email);
     @Override
     Optional<User> findById(String id);
+    
+    List<User> findAllByRole(String role);
+
 }

@@ -65,7 +65,7 @@ const AppContent = () => {
                 
                 {/* Driver Routes */}
 
-                <Route path="/driver-home" element={<DriverHome />} />
+               
                 <Route path="/driver-schedule" element={<DriverSchedule />} />
 
                 <Route path="/driver-dashboard" element={<DriverHome />} />

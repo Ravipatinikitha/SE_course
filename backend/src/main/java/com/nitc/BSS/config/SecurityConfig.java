@@ -20,27 +20,30 @@ public class SecurityConfig {
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .csrf().disable()
-        .cors() // enable CORS from your CorsFilter
+        .cors()
         .and()
         .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // stateless API
+            .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) 
         .and()
         .authorizeHttpRequests(auth -> auth
-        .requestMatchers("/api/auth/**").permitAll()
-        .requestMatchers("/api/driver-schedule").permitAll()
-        .requestMatchers("/api/student-dashboard", "/api/bus-schedule").permitAll()
-        .requestMatchers("/api/bus-schedule/**").permitAll() // 🔥 FIXED LINE
-        .requestMatchers("/api/buses/**").authenticated()
-        
-        .anyRequest().authenticated()
-    )
-    
-        .httpBasic().disable() // disable basic auth
-        .formLogin().disable(); // disable default login page
+            .requestMatchers("/api/auth/**").permitAll()
+            .requestMatchers("/api/driver-schedule/**").permitAll() 
+            .requestMatchers("/api/driver/info/**").permitAll()
+            .requestMatchers("/api/driver/**").hasRole("DRIVER")
+
+            .requestMatchers("/api/student-dashboard", "/api/bus-schedule").permitAll()
+          
+            .requestMatchers("/api/bus-schedule/**").permitAll()
+            .requestMatchers("/api/buses/**").authenticated()
+            .anyRequest().authenticated()
+        )
+        .formLogin().disable() // disable Spring’s default form
+        .httpBasic().disable(); // disable basic auth
 
     return http.build();
 }
 
+    
     @Bean
 public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
     return config.getAuthenticationManager();

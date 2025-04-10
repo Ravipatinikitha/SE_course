@@ -1,168 +1,95 @@
-.driver-schedule {
+.driver-schedule-container {
+    padding: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #3b49df;
+    margin-bottom: 20px;
+  }
+  
+  .schedule-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 640px;
-    width: 360px;
-    margin: 0 auto;
-    background-color: #F0F2F5;
-    font-family: Arial, sans-serif;
-}
-
-.header {
-    background-color: #5A9BD5;
-    color: white;
-    width: 100%;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px;
-}
-
-.schedule-card {
-    background-color: white;
-    padding: 15px;
+    gap: 16px;
+  }
+  
+  .schedule-card {
+    background-color: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    margin: 10px 0;
-    text-align: left;
-}
-*
-.button-group {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 8px;
+    gap: 10px;
+  }
+  
+  .info-row svg {
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  
+  .button-group {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-}
-
-.delay-btn {
-    background-color: #ffc107;
-    color: black;
-    padding: 8px;
+    gap: 10px;
+  }
+  
+  .delay-btn,
+  .start-btn,
+  .complete-btn {
+    flex: 1;
+    padding: 10px 0;
     border: none;
-    border-radius: 5px;
-    width: 48%;
-}
-
-.start-btn {
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .delay-btn {
+    background-color: #cedcff;
+    color: #3b49df;
+  }
+  
+  .start-btn {
+    background-color: #3b49df;
+    color: white;
+  }
+  
+  .complete-btn {
     background-color: #28a745;
     color: white;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    width: 48%;
-}
-
-.driver-schedule-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.error-message {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px 15px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.error-message button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.loading-spinner, .no-schedule {
+  }
+  
+  .delay-btn:hover {
+    background-color: #b6caff;
+  }
+  
+  .start-btn:hover {
+    background-color: #2f3ecf;
+  }
+  
+  .complete-btn:hover {
+    background-color: #218838;
+  }
+  
+  .loading,
+  .error,
+  .empty-text {
     text-align: center;
-    padding: 40px;
-    color: #7f8c8d;
-    font-size: 1.1rem;
-}
-
-.current-bus-card {
-    background-color: #e8f5e9;
-    border-left: 5px solid #2e7d32;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.current-bus-card h3 {
-    color: #2e7d32;
-    margin-top: 0;
-}
-
-.schedule-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.schedule-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.schedule-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-.schedule-card p {
-    margin: 8px 0;
-}
-
-.button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.start-btn, .complete-btn, .delay-btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.2s;
-}
-
-.start-btn {
-    background-color: #2e7d32;
-    color: white;
-}
-
-.start-btn:hover {
-    background-color: #1b5e20;
-}
-
-.complete-btn {
-    background-color: #0277bd;
-    color: white;
-}
-
-.complete-btn:hover {
-    background-color: #01579b;
-}
-
-.delay-btn {
-    background-color: #ff8f00;
-    color: white;
-}
-
-.delay-btn:hover {
-    background-color: #e65100;
-}
+    color: #555;
+    margin-top: 40px;
+  }
+  

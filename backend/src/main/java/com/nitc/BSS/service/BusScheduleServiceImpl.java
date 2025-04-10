@@ -3,12 +3,13 @@ package com.nitc.BSS.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.nitc.BSS.dto.BusScheduleDTO;
 import com.nitc.BSS.model.BusSchedule;
 import com.nitc.BSS.model.BusSchedule.BusStatus;
-import com.nitc.BSS.repository.BusScheduleRepository;
+import com.nitc.BSS.repository.BusScheduleRepository; // Make sure to import this
 
 
 @Service
@@ -20,15 +21,14 @@ public class BusScheduleServiceImpl implements BusScheduleService {
         this.busScheduleRepository = busScheduleRepository;
     }
 
+   
+
     @Override
     public List<BusScheduleDTO> getUpcomingBuses() {
-        List<BusSchedule> notStartedBuses = busScheduleRepository.findTop5ByStatusOrderByIdAsc(BusSchedule.BusStatus.NOT_STARTED);
-
-        return notStartedBuses.stream()
-            .map(this::convertToDTO)
-            .collect(Collectors.toList());
+        List<BusSchedule> buses = busScheduleRepository.findTop5ActiveSchedules(PageRequest.of(0, 5));
+        return buses.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
-    
+
 
     @Override
     public List<BusScheduleDTO> getRunningBuses() {
