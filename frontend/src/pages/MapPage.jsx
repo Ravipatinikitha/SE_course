@@ -1,4 +1,6 @@
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+// MapPage.js
+import React from "react";
+import { GoogleMap, Marker } from "@react-google-maps/api";
 import "../assets/styles/MapPage.css";
 
 const containerStyle = {
@@ -12,26 +14,10 @@ const center = {
 };
 
 const MapPage = () => {
-  const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY, // Make sure .env is correctly set!
-  });
-
-  if (loadError) {
-    return <p>Error loading maps. Please check your API key or internet.</p>;
-  }
-
-  if (!isLoaded) {
-    return <p>Loading Map...</p>;
-  }
-
   return (
     <div className="map-page">
       <h2>Bus Routes & Stops</h2>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={16}
-      >
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}>
         <Marker position={center} />
       </GoogleMap>
     </div>
