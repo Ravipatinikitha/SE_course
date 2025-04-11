@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../assets/styles/Feedback.css';
+import '../../assets/styles/FAQ.css';
 
 const Feedback = () => {
     const [ratings, setRatings] = useState({
@@ -28,13 +28,12 @@ const Feedback = () => {
             ))}
         </div>
     );
-
     return (
-        <div className="feedback">
-            {/* Scrollable Content */}
-            <div className="feedback-scrollable">
+        <div className="faq-container">
+
+            <div className="faq-scrollable">
                 <div className="question">
-                    <p>1. How easy is it to navigate the bus scheduling app?</p>
+                <p>1. How easy is it to navigate the bus scheduling app?</p>
                     <StarRating
                         value={ratings.navigation}
                         onChange={(rating) => handleRatingChange(rating, 'navigation')}
@@ -42,7 +41,7 @@ const Feedback = () => {
                 </div>
 
                 <div className="question">
-                    <p>2. How clear and understandable is the bus schedule information?</p>
+                <p>2. How clear and understandable is the bus schedule information?</p>
                     <StarRating
                         value={ratings.scheduleInfo}
                         onChange={(rating) => handleRatingChange(rating, 'scheduleInfo')}
@@ -50,7 +49,7 @@ const Feedback = () => {
                 </div>
 
                 <div className="question">
-                    <p>3. How useful are the notifications for bus delays or cancellations?</p>
+                <p>3. How useful are the notifications for bus delays or cancellations?</p>
                     <StarRating
                         value={ratings.notifications}
                         onChange={(rating) => handleRatingChange(rating, 'notifications')}
@@ -58,7 +57,7 @@ const Feedback = () => {
                 </div>
 
                 <div className="question">
-                    <p>4. How responsive is the app in terms of loading speed and updates?</p>
+                <p>4. How responsive is the app in terms of loading speed and updates?</p>
                     <StarRating
                         value={ratings.speed}
                         onChange={(rating) => handleRatingChange(rating, 'speed')}
@@ -66,15 +65,19 @@ const Feedback = () => {
                 </div>
 
                 <div className="question">
-                    <p>5. How satisfied are you with the overall user experience of the app?</p>
+                <p>5. How satisfied are you with the overall user experience of the app?</p>
                     <StarRating
                         value={ratings.experience}
                         onChange={(rating) => handleRatingChange(rating, 'experience')}
                     />
                 </div>
 
-                <textarea placeholder="Add Comment"></textarea>
-                <button>Submit</button>
+                {/* Any Doubts Section */}
+                <div className="any-doubts">
+                    <h3>Comments</h3>
+                    <textarea placeholder="Add comment"></textarea>
+                    <button>Submit</button>
+                </div>
             </div>
         </div>
     );

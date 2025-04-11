@@ -1,0 +1,79 @@
+.schedule-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    width:320px;
+    transition: all 0.3s ease;
+  }
+  
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 8px;
+    gap: 10px;
+  }
+  
+  .info-row svg {
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  
+  .status-chip {
+    font-size: 12px;
+    background-color: #e7e7e7;
+    color: #333;
+    border-radius: 8px;
+    padding: 4px 8px;
+    display: inline-block;
+    margin-top: 6px;
+    width: fit-content;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  
+  .delay-btn,
+  .start-btn,
+  .complete-btn {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .delay-btn {
+    background-color: #cedcff;
+    color: #3b49df;
+  }
+  
+  .start-btn {
+    background-color: #3b49df;
+    color: white;
+  }
+  
+  .complete-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .delay-btn:hover {
+    background-color: #b6caff;
+  }
+  
+  .start-btn:hover {
+    background-color: #2f3ecf;
+  }
+  
+  .complete-btn:hover {
+    background-color: #218838;
+  }
+  

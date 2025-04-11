@@ -1,98 +1,51 @@
-/* Container */
+.mobile-frame {
+  max-width: 400px;
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sticky navbar inside the frame */
+.fixed-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff; /* Make sure it has a background */
+}
+
+/* This scrolls */
+.scrollable-content {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Inside scroll area */
 .dashboard-container {
-    padding: 16px;
-    max-width: 500px;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-  
-  /* Section Title */
-  .section-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #3742fa;
-    text-align: center;
-    margin-bottom: 16px;
-  }
-  
-  /* Bus List Layout */
-  .buses-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding: 10px 0;
-  }
-  
-  
-  /* Card Styling */
-  .bus-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    padding: 16px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 16px;
-  }
-  
-  
-  .bus-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  
-  /* Header Row */
-  .bus-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  
-  /* Bus Name */
-  .bus-name {
-    font-weight: 600;
-    font-size: 1rem;
-    color: #222;
-    margin: 0;
-  }
-  
-  /* View in Map Button */
-  .map-button {
-    background-color: #4c5bd4;
-    color: white;
-    padding: 6px 12px;
-    font-size: 0.75rem;
-    border: none;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background-color 0.2s;
-  }
-  
-  .map-button:hover {
-    background-color: #3a49b4;
-  }
-  
-  /* Bus Details */
-  .bus-detail {
-    font-size: 0.875rem;
-    margin: 4px 0;
-    color: #333;
-  }
-  
-  .bus-detail strong {
-    font-weight: 600;
-  }
-  
-  .bus-info-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 6px;
-    font-size: 0.9rem;
-    color: #444;
-  }
-  
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.dashboard-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.buses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.no-buses {
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+}

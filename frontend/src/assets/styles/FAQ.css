@@ -1,7 +1,71 @@
-/* Main container for the FAQ page */
 .faq-container {
-    width: 360px; /* Mobile viewport */
-    height: 640px; /* Ensure full height */
+    width: 375px;
+    height: 812px;
+    background-color: #f5f5f5;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative; /* important */
+}
+
+.faq-scrollable {
+    padding: 16px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.question {
+    background-color: white;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.any-doubts textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+.any-doubts button {
+    background-color: #4f7cf7;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* ✅ Custom In-Container Popup */
+.confirmation-popup {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4f7cf7;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, 10px); }
+    10% { opacity: 1; transform: translate(-50%, 0); }
+    90% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, 10px); }
+}
+
+/* Container for Feedback Page */
+.feedback {
+    width: 360px; /* Mobile-friendly width */
+    height: 640px; /* Fixed height */
     margin: 0 auto;
     background-color: #f5f5f5;
     border-radius: 12px;
@@ -12,24 +76,23 @@
 }
 
 /* Scrollable section */
-.faq-scrollable {
+.feedback-scrollable {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: scroll;  /* Enable scrolling */
     padding: 20px;
     box-sizing: border-box;
+    
+    /* Hide scrollbar for different browsers */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 11 */
 }
 
-/* Hide the scrollbar */
-.faq-scrollable::-webkit-scrollbar {
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.feedback-scrollable::-webkit-scrollbar {
     display: none;
 }
 
-.faq-scrollable {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-/* Question styling */
+/* Feedback Question Styling */
 .question {
     background-color: #ffffff;
     border: 1px solid #ddd;
@@ -38,26 +101,36 @@
     margin-bottom: 10px;
 }
 
-/* Any Doubts Section */
-.any-doubts {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    margin-top: 10px;
-    text-align: center;
+/* Star Ratings */
+.star-rating {
+    display: flex;
+    justify-content: start;
 }
 
-.any-doubts textarea {
+.star {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.star.filled {
+    color: #FFD700;
+}
+
+/* Text Area for Comments */
+textarea {
     width: 100%;
-    height: 60px;
+    height: 80px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
+    font-size: 14px;
     resize: none;
 }
 
-.any-doubts button {
+/* Submit Button */
+button {
     width: 100%;
     background-color: #3F51B5;
     color: white;
@@ -68,12 +141,6 @@
     margin-top: 10px;
 }
 
-.any-doubts button:hover {
+button:hover {
     background-color: #303F9F;
-}
-
-/* Make sure questions are not bold */
-.question p {
-    font-size: 14px;
-    font-weight: normal; /* Ensures text is not bold */
 }

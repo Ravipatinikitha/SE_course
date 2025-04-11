@@ -4,6 +4,7 @@ import "../../assets/styles/BusSchedule.css";
 
 const BusSchedule = () => {
     const [buses, setBuses] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:8080/api/bus-schedule')
             .then(response => {
@@ -13,15 +14,15 @@ const BusSchedule = () => {
             .then(data => setBuses(data))
             .catch(error => console.error('Fetch error:', error));
     }, []);
-    
 
     return (
         <div className="schedule-wrapper">
+            {/* Header */}
             <div className="schedule-header">
-                <h2>Bus Schedule</h2>
                 <Link to="/reminder" className="add-reminder">+ Add Reminder</Link>
             </div>
 
+            {/* Schedule Table */}
             <div className="schedule-table">
                 <div className="table-header">
                     <div>Bus</div>

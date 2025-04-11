@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BusCard from './Buscard'; // adjust this path if needed
 import '../../assets/styles/StudentDashboard.css';
 
 const StudentHome = () => {
@@ -13,20 +14,12 @@ const StudentHome = () => {
 
   return (
     <div className="dashboard-container">
-      <h2 className="section-title">Upcoming Buses</h2>
+      {/* <header className="dashboard-header">
+        <h2>Upcoming Buses</h2>
+      </header> */}
       <div className="buses-list">
         {buses.map((bus, index) => (
-          <div className="bus-card" key={index}>
-            <div className="bus-header">
-              <h3 className="bus-name">{bus.busName}</h3>
-              <a href="/map" className="map-button">View in Map</a>
-            </div>
-            <p className="bus-detail"><strong>Departure:</strong> {bus.departureLocation}</p>
-            <p className="bus-detail"><strong>Arrival:</strong> {bus.arrivalLocation}</p>
-            <p className="bus-detail"><strong>Event:</strong> {bus.startTime}</p>
-            <p className="bus-detail"><strong>Schedule:</strong> {bus.endTime}</p>
-            <p className="bus-detail"><strong>Status:</strong> {bus.status === 'STARTED' ? 'Running' : bus.status}</p>
-          </div>
+          <BusCard key={index} bus={bus} />
         ))}
       </div>
     </div>

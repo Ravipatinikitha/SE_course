@@ -1,56 +1,96 @@
 .schedule-wrapper {
-    padding: 16px;
-    max-width: 400px;
-    margin: 0 auto;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .schedule-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #4f7cf7;
-    padding: 10px 16px;
-    border-radius: 8px 8px 0 0;
-    color: white;
-  }
-  
-  .schedule-header h2 {
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0;
-  }
-  
-  .add-reminder {
-    font-size: 14px;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-  }
-  
-  .schedule-table {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-top: none;
-    border-radius: 0 0 12px 12px;
-    overflow: hidden;
-  }
-  
-  .table-header,
-  .table-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 16px;
-    border-bottom: 1px solid #eee;
-    font-size: 14px;
-  }
-  
-  .table-header {
-    background-color: #e1eaff;
-    font-weight: 600;
-  }
-  
-  .table-row:last-child {
-    border-bottom: none;
-  }
-  
+  padding: 70px 16px 16px; /* Top padding to avoid navbar overlap */
+  width: 375px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.schedule-header {
+  width:150px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3B4CCA;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-header h2 {
+  font-size: 18px;
+  align-items: center;
+  font-weight: 600;
+  margin: 0;
+}
+
+.add-reminder {
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+.schedule-table {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+
+.table-header,
+.table-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  font-size: 14px;
+}
+
+.table-header {
+  background-color: #e1eaff;
+  font-weight: 600;
+}
+
+.table-row {
+  border-top: 1px solid #eee;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-header,
+.table-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.table-header > div,
+.table-row > div {
+  flex-basis: 33.33%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 10fr 10fr 10fr; /* Three equal columns */
+  column-gap: 29px; /* Adjust this value for more or less spacing */
+  padding: 12px 16px;
+  font-size: 14px;
+  text-align: center;
+}
+

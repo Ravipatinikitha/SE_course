@@ -34,7 +34,7 @@ public class AuthController {
 
     @PostMapping("/login")
 public ResponseEntity<?> login(@RequestBody Map<String, String> request, HttpServletRequest httpRequest) {
-    System.out.println("🔥 Received login request");
+    System.out.println("Received login request");
     try {
         String id = request.get("id");
         String password = request.get("password");
@@ -44,7 +44,7 @@ public ResponseEntity<?> login(@RequestBody Map<String, String> request, HttpSer
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "Invalid credentials"));
         }
 
-        // ✅ Store user ID in session
+        // Store user ID in session
         httpRequest.getSession().setAttribute("USER_ID", user.getId());
 
         return ResponseEntity.ok(Map.of(

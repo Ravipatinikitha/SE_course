@@ -80,7 +80,7 @@ public BusScheduleDTO convertToDTO(BusSchedule bus) {
     dto.setStartTime(bus.getStartTime().toString());
     dto.setEndTime(bus.getEndTime().toString());
     dto.setStatus(bus.getStatus().name());
-    dto.setDriverId(bus.getDriverId()); // 🔥 NEW
+    dto.setDriverId(bus.getDriverId()); 
     return dto;
 }
 

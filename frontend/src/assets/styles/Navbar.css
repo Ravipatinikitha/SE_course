@@ -2,10 +2,11 @@
     background-color: #3F51B5;
     color: white;
     display: flex;
+    border-radius: 16px;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    width: 360px; /* Mobile viewport width */
+    width: 375px; /* Mobile viewport width */
     height: 60px; /* Mobile viewport height */
     margin: 0 auto;
     top: 0;

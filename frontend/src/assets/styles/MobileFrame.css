@@ -1,0 +1,64 @@
+.device-preview {
+    width: 375px;
+    height: 667px;
+    background-color: #f9f9f9;
+    border-radius: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    margin: 50px auto;
+    border: 6px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .notch-bar {
+    height: 24px;
+    background: #1a1a1a;
+    color: white;
+    font-size: 12px;
+    padding: 0 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: sans-serif;
+  }
+  
+  .mobile-body {
+    flex-grow: 1;
+    background: #f0f4ff;
+    overflow-y: auto;
+    padding: 16px;
+    width:375px;
+  }
+/* src/components/MobileFrame.css */
+.mobile-frame-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f2f2f2;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .mobile-frame {
+    max-width: 400px;
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f2f2f2;
+    min-height: 100vh;
+    width: 100%;
+  }
+  
