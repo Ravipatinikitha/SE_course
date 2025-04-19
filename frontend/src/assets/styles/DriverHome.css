@@ -24,7 +24,7 @@
 }
 
 .start-btn {
-    background-color: #3b5bdb;
+    background-color: green;
     color: white;
     padding: 10px;
     border: none;
@@ -86,7 +86,7 @@
 
 .delay-btn {
     background-color: #cce0ff;
-    color: #004085;
+    color: red;
     border: none;
     padding: 6px 12px;
     border-radius: 6px;

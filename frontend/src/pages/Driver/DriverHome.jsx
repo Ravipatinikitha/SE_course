@@ -51,7 +51,7 @@ const DriverHome = () => {
                 <p><strong>Name:</strong> {driverInfo.driverName}</p>
                 <p><strong>ID:</strong> {driverInfo.driverId}</p>
                 <p><strong>Assigned Bus:</strong> {driverInfo.assignedBus}</p>
-                <p><strong>Phone:</strong> 9802134568</p>
+               
             </div>
 
             <div className="button-group">
